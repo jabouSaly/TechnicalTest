@@ -1,0 +1,28 @@
+<h2>Ajouter un film</h2>
+<div>
+<input type="text" pInputText #movie> 
+<p-button (click)="add(movie.value)" class="button-add">Ajouter</p-button>
+<br>
+</div>
+
+<ul *ngFor="let item of list">
+<li>
+    <div clickable (click)="openModal()">
+        {{item.Title}}
+    </div>
+    <button pButton pRipple type="button" icon="pi pi-heart" class="p-button-rounded" (click)="addTofavorite(item.Title)"></button>
+    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded" (click)="removeMovie(item.id)"></button>
+    <p-dialog header="Détails du film" [(visible)]="display" [style]="{width: '50vw'}">
+        <p>Title: {{item.Title}}</p>
+        <p>Type: {{item.Type}}</p>
+        <p>Year: {{item.Year}}</p>
+        <p><img src="{{item.Poster}}"></p>
+    </p-dialog>
+</li>
+<br />
+</ul>
+<h3>List favori</h3>
+<ul *ngFor="let item of favoriteList">
+    <li>{{item.name}}
+        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded" (click)="removeFavorite(item.id)"></button>
+    </ul>

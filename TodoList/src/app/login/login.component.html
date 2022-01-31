@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <p-panel header="Login Page">
+        <div>
+            <div  class="p-field">
+                <label for="login" class="block">Username</label>
+                <input formControlName="login" id="login" type="text" aria-describedby="login-help" class="ng-invalid ng-dirty" pInputText />
+                <small id="login-help" [hidden]="loginForm.controls['login'].valid" class="p-invalid">Username Invalid.</small>
+            </div>
+            <div  class="p-field">
+                <label for="password" class="block">Password</label>
+                <input formControlName="password" id="password" type="password" aria-describedby="password-help" class="ng-invalid ng-dirty" pInputText />
+                <small id="password-help" [hidden]="loginForm.controls['login'].valid" class="p-invalid">Password Invalid.</small>
+            </div>
+            <p-toast></p-toast>
+                <div>
+                    <p-button (click)="onSubmit()" [disabled]="!loginForm.valid" >Login</p-button>
+                </div>
+        </div>
+    </p-panel>
+</form>
